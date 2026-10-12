@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>TaskFlow — Daily To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="TaskFlow home"><span class="brand-icon">✓</span> TaskFlow<span class="brand-dot">.</span></a>
+      <div class="user"><span class="avatar" id="avatar">E</span><div><strong id="profileName">Employee</strong><small id="profileRole">Team Member</small></div></div>
+    </header>
+
+    <section class="hero">
+      <div><p class="eyebrow">YOUR WORKSPACE</p><h1>Make today <em>count.</em></h1><p class="subtitle">Stay focused, prioritize what matters, and celebrate every win.</p></div>
+      <div class="date-card"><span class="date-label">TODAY</span><strong id="currentDay">—</strong><span id="currentDate">—</span></div>
+    </section>
+
+    <section class="stats" aria-label="Task overview">
+      <div class="stat"><span>All tasks</span><strong id="totalCount">0</strong></div>
+      <div class="stat"><span>To do</span><strong id="todoCount">0</strong></div>
+      <div class="stat"><span>Completed</span><strong id="doneCount">0</strong></div>
+      <div class="stat"><span>Progress</span><strong id="progressCount">0%</strong><div class="progress"><div id="progressBar"></div></div></div>
+    </section>
+
+    <section class="editor panel" aria-labelledby="addTitle">
+      <div class="section-head"><div><p class="eyebrow">PLAN AHEAD</p><h2 id="addTitle">Create a task</h2></div><span class="hint">One step at a time ✨</span></div>
+      <form id="taskForm">
+        <label for="taskText">Task description</label>
+        <textarea id="taskText" placeholder="What do you need to get done?" rows="3" maxlength="200" required></textarea>
+        <div class="fields"><div><label for="priority">Priority level</label><select id="priority"><option value="low">Low priority</option><option value="medium" selected>Medium priority</option><option value="high">High priority</option></select></div><div><label for="dueDate">Due date <span class="optional">(optional · bonus)</span></label><input type="date" id="dueDate"></div></div>
+        <div class="form-footer"><small id="formMessage" role="status">Keep your tasks clear and actionable.</small><button class="primary" type="submit">+ Add task</button></div>
+      </form>
+    </section>
+
+    <div class="board-head"><div><p class="eyebrow">YOUR TASK BOARD</p><h2>Keep things moving</h2></div><button id="deleteAll" class="danger-button" type="button">Delete all tasks</button></div>
+    <div class="board">
+      <section class="task-panel panel" aria-labelledby="todoTitle"><div class="list-heading"><h3 id="todoTitle"><span class="status-dot todo-dot"></span> To Do</h3><span id="todoBadge" class="count-badge">0</span></div><div id="todoList" class="task-list" aria-live="polite"></div></section>
+      <section class="task-panel panel" aria-labelledby="doneTitle"><div class="list-heading"><h3 id="doneTitle"><span class="status-dot done-dot"></span> Done</h3><span id="doneBadge" class="count-badge">0</span></div><div id="doneList" class="task-list" aria-live="polite"></div></section>
+    </div>
+    <footer>TaskFlow · Small steps, big progress.</footer>
+  </main>
+  <dialog id="confirmDialog"><form method="dialog"><h2>Delete all tasks?</h2><p>This action permanently removes every task in To Do and Done.</p><div class="dialog-actions"><button value="cancel" class="secondary">Cancel</button><button value="confirm" class="primary destructive">Delete all</button></div></form></dialog>
+</body>
+</html>
